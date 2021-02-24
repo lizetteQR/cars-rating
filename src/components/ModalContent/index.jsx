@@ -1,7 +1,15 @@
 import { Modal, Button } from 'react-bootstrap'
 
 const ModalContent = (props) => {
-	const { title, onHandleShow, btnLeft, btnRight, disabled } = props
+	const {
+		title,
+		onHandleShow,
+		btnLeft,
+		btnRight,
+		disabled,
+		btnType,
+		handleAction,
+	} = props
 	return (
 		<>
 			<Modal.Header closeButton>
@@ -9,10 +17,17 @@ const ModalContent = (props) => {
 			</Modal.Header>
 			<Modal.Body>{props.children}</Modal.Body>
 			<Modal.Footer>
-				<Button variant='secondary' onClick={onHandleShow}>
-					{btnLeft}
-				</Button>
-				<Button variant='primary' type='submit' disabled={disabled}>
+				{btnLeft && (
+					<Button variant='secondary' onClick={onHandleShow}>
+						{btnLeft}
+					</Button>
+				)}
+				<Button
+					variant='primary'
+					type={btnType}
+					disabled={disabled}
+					onClick={handleAction}
+				>
 					{btnRight}
 				</Button>
 			</Modal.Footer>

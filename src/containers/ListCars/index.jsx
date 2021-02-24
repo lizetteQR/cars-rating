@@ -31,11 +31,13 @@ class ListCars extends React.Component {
 		}))
 	}
 
-	onHandleShowConfirmation = () => {
+	onHandleConfirmation = () => {
 		this.setState((currentState) => ({
 			...currentState,
 			showConfirmation: !currentState.showConfirmation,
 		}))
+
+		this.props.getCarsAction()
 	}
 
 	onHandleAction = (values) => {
@@ -69,18 +71,21 @@ class ListCars extends React.Component {
 				/>
 				<FormMaintenance
 					show={show}
-					title='Titulo de modal'
+					title='Envar a mantenimiento'
 					onHandleShow={this.onHandleShow}
-					handleAction={this.onHandleAction}
+					handleSubmit={this.onHandleAction}
+					handleAction={() => {}}
 					btnLeft='Cerrar'
 					btnRight='Guardar'
+					btnType='submit'
 				/>
 
-				<Modal show={showConfirmation} onHide={this.onHandleShowConfirmation}>
+				<Modal show={showConfirmation}>
 					<ModalContent
 						title='Solicitud Exitosa'
-						onHandleShow={this.onHandleShowConfirmation}
 						btnRight={'Entendido'}
+						btnType='button'
+						handleAction={this.onHandleConfirmation}
 					>
 						<div>El auto ha sido marcado a mantenimiento.</div>
 						{saveStatusCars && saveStatusCars.data && (

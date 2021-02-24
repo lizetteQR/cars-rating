@@ -40,7 +40,10 @@ const CardElement = ({ arrayCars, onHandleShow }) => {
 											Modelo: <b>{elem.model}</b>
 										</div>
 										<div>
-											Kilomatraje actual: <b>{elem.km}</b>
+											Kilomatraje actual: <b>{elem.km || '---'}</b>
+										</div>
+										<div>
+											Fecha de entrega: <b>{elem.date || 'N/A'}</b>
 										</div>
 										<div style={{ height: '60px' }}>
 											Descripción: <b>{elem.description}</b>

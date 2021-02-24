@@ -6,7 +6,15 @@ import Message from '../Message'
 import * as Yup from 'yup'
 
 const FormMaintenance = (props) => {
-	const { show, title, onHandleShow, handleAction, btnLeft, btnRight } = props
+	const {
+		show,
+		title,
+		onHandleShow,
+		handleSubmit,
+		btnLeft,
+		btnRight,
+		btnType,
+	} = props
 
 	const schema = Yup.object({
 		name: Yup.string().required('Por favor ingresa tu nombre'),
@@ -26,8 +34,7 @@ const FormMaintenance = (props) => {
 				}}
 				validationSchema={schema}
 				onSubmit={(values) => {
-					console.log(values)
-					handleAction(values)
+					handleSubmit(values)
 				}}
 			>
 				{({ dirty }) => (
@@ -38,6 +45,7 @@ const FormMaintenance = (props) => {
 							btnLeft={btnLeft}
 							btnRight={btnRight}
 							disabled={!dirty}
+							btnType={btnType}
 						>
 							<Field name='name'>
 								{({ field, meta }) => (
