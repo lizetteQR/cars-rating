@@ -5,7 +5,7 @@ import { LIST_CARS, SAVE_STATUS_CAR } from './actionTypes'
 
 export const getCars = () => (dispatch) => {
 	return axios
-		.get(`${process.env.URL_API}api/cars`)
+		.get(`api/cars`)
 		.then((res) => {
 			dispatch({ type: LIST_CARS, Obj: res.data })
 		})
@@ -16,7 +16,7 @@ export const getCars = () => (dispatch) => {
 
 export const saveStatusCar = (form) => (dispatch) => {
 	return axios
-		.post(`${process.env.URL_API}api/saveStatusCar`, form)
+		.post(`api/saveStatusCar`, form)
 		.then((res) => {
 			dispatch({ type: SAVE_STATUS_CAR, Obj: res.data })
 			return res.data
